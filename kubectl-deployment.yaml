@@ -1,0 +1,20 @@
+#
+# The containerPort is the port that messages are passed to the
+# docker container (which has exposed the port in the Dockerfile)
+#
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: globallocation-deployment
+spec:
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: globallocation-app
+    spec:
+      containers:
+      - name: svcp-globallocation
+        image: gcr.io/svcp-globallocation-2/globallocation
+        ports:
+        - containerPort: 3000

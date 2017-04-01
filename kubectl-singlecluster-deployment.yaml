@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: globallocation-singlecluster-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: globallocation-app
+    spec:
+      containers:
+      - name: svcp-globallocation
+        image: gcr.io/svcp-globallocation-2/globallocation
+        ports:
+        - containerPort: 3000

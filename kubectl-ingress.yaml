@@ -1,0 +1,15 @@
+#
+# make sure spec:serviceName is the same name as the
+# nodePort service name.
+#
+#
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: globallocation-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: globallocation-ipaddress
+spec:
+  backend:
+    serviceName: globallocation-nodeport-svc
+    servicePort: 80

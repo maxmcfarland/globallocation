@@ -1,0 +1,18 @@
+#
+# The Port is the port number requests are recieved on.
+# the targetPort is to port number the request is forwared to
+# Make sure the selector:app is the same name as the app in the deployment
+#
+#
+kind: Service
+metadata:
+  name: globallocation-nodeport-svc
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+      nodePort: 30036
+  selector:
+    app: globallocation-app
+  type: NodePort
